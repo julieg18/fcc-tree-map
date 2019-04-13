@@ -9,13 +9,13 @@ let treemap = d3.treemap()
   .size([treeMapWidth, treeMapHeight])
   .paddingInner(1)
 let colors = {
-  'Action': 'red',
-  'Drama': 'blue',
+  'Action': '#e21313',
+  'Drama': '#8311b1',
   'Adventure': 'orange',
-  'Family': 'yellow',
+  'Family': '#db92d5',
   'Animation': 'lightblue',
-  'Comedy': 'green',
-  'Biography': 'gray'
+  'Comedy': '#424cda',
+  'Biography': '#0fb80f'
 }
 
 function makeGenreArray (obj) {
@@ -83,6 +83,7 @@ req.onload = function () {
     .data(genreArray)
     .enter()
     .append('rect')
+    .attr('class', 'legend-item')
     .attr('height', 20)
     .attr('width', 20)
     .attr('x', (d, i) => i * (legendWidth / 7))
