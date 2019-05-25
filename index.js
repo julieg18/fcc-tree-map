@@ -26,6 +26,15 @@ function makeGenreArray (obj) {
   return arr
 }
 
+function formatValue(val) {
+  let formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 0
+  })
+  return formatter.format(val)
+}
+
 let req = new XMLHttpRequest()
 req.open('GET', JSONlink, true)
 req.send()
@@ -63,7 +72,7 @@ req.onload = function () {
           </br>
           Category: ${d.data.category}
           </br>
-          Value: ${d.data.value}
+          Value: ${formatValue(d.data.value)}
         `)
     })
     .on('mouseout', (d) => {
